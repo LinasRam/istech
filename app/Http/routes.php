@@ -28,3 +28,8 @@ Route::get('/kategorija/{kategorija}', [
     'uses' => 'kategorijaController@getKategorijaPage',
     'as' => 'kategorija'
 ]);
+
+Route::get('/straipsnis/{kategorija?}/{url?}', [
+    'uses' => 'straipsnisController@getStraipsnis',
+    'as' => 'straipsnis'
+]);

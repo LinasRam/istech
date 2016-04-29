@@ -77,13 +77,13 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6 col-md-4">
-                                <a href="#" class="thumbnail">
+                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}" class="thumbnail">
                                     <img src="{{ $straipsnis->photo }}" alt="...">
                                 </a>
                             </div>
                             <p>{{ $straipsnis->ivadas }}</p>
                             <div class="read-more">
-                                <a href="#">Skaityti daugiau</a>
+                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}">Skaityti daugiau</a>
                             </div>
                         </div>
                     </div>

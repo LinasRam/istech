@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Istech</title>
+    <title>{{ $straipsnis->pavadinimas }}</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('home') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ route('home') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
                 <li><a href="{{ route('kategorija', ['istorijos']) }}">Istorijos</a></li>
                 <li><a href="{{ route('kategorija', ['mašinos']) }}">Mašinos</a></li>
@@ -62,9 +62,9 @@
 
 <body>
 
-<div class="jumbotron" style="background-image: url(https://scontent-arn2-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/10857736_635785036554764_1430993853386636908_n.jpg?oh=cb3209f078c437457ee201d40c12ec6a&oe=57772349);">
+<div class="jumbotron" style="background-image: url({{ $straipsnis->photo }});">
     <div class="container">
-        <h1>Straipsnio pavadinimas</h1>
+        <h1>{{ $straipsnis->pavadinimas }}</h1>
     </div>
 </div>
 
@@ -73,7 +73,7 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>1939 metais amerikiečių kariuomenė paskelbė konkursą transporto priemonei, kuri turėjo būti tinkama naudoti įvairiomis sąlygomis, pavežti 270 kilogramų, būti stačiakampio formos ir turėti mažiausiai tris sėdynes. Kompanija "Willys-Overland" sukūrė galutinį džipo modelį ir pirmasis jų iš gamyklos išriedėjo 1941 metų gruodį. Įspūdinga ir novatoriška transporto priemonė galėjo prisitaikyti prie bet kokių transporto poreikių, tai suteikė jai oficialų G. P. (General Purpose) pavadinimą. Greitai transporto priemonė tapo žinoma kaip "Jeep", o dėl šio vardo kilmės egzistavo daugybė versijų. Džipas varomas keturiais ratais, neturėjo šarvo ir todėl galėdavo pasiekti didesnį nei 100 km/h greitį ir su pilnu baku kuro įveikti 500 km. Džipas tapo amerikiečių kariuomenės simboliu, kartu su kokakola ir kramtomąja guma. Džipų naudojimas truko iki pat 1981 metų, kai juos pakeitė hameriai (Hummer).</p>
+                    <p>{{ $straipsnis->tekstas }}</p>
                 </div>
             </div>
         </div>
@@ -111,14 +111,24 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-<script>(function(d, s, id) {
+<script>
+    (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/lt_LT/sdk.js#xfbml=1&version=v2.5&appId=792962924158405";
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script>
+    $(document).ready(function(){
+        var tabName = "{{ ucfirst($straipsnis->kategorija) }}";
+        $("a:contains('"+tabName+"')").parent().addClass('active');
+    });
+</script>
+
 </body>
 </html>
