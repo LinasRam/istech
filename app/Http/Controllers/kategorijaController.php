@@ -10,13 +10,15 @@ use App\Http\Requests;
 class kategorijaController extends Controller
 {
     public function getKategorijaPage($kategorija){
+        $title = 'Visi straipsniai';
         if($kategorija == 'visi-straipsniai'){
-            $straipsniai = Straipsniai::all();
+            $straipsniai = Straipsniai::orderBy('id', 'DESC')->get();
         }
         else{
-            $straipsniai = Straipsniai::where('kategorija', $kategorija)->get();
+            $straipsniai = Straipsniai::where('kategorija', $kategorija)->orderBy('id','DESC')->get();
+            $title = $kategorija;
         }
 
-        return view('kategorija', ['straipsniai' => $straipsniai]);
+        return view('kategorija', ['straipsniai' => $straipsniai, 'title' => $title]);
     }
 }

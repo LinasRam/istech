@@ -10,7 +10,7 @@ use App\Http\Requests;
 class welcomeController extends Controller
 {
     public function getWelcomePage(){
-        $straipsniai = Straipsniai::take(3)->get();
+        $straipsniai = Straipsniai::orderBy('id', 'DESC')->take(3)->get();
         
         return view('welcome', ['straipsniai' => $straipsniai]);
     }

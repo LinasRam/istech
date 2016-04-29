@@ -29,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ISTECH</a>
+            <a class="navbar-brand" href="{{ route('home') }}">ISTECH</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,8 +38,8 @@
                 <li class="active"><a href="{{ route('home') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
                 <li><a href="{{ route('kategorija', ['istorijos']) }}">Istorijos</a></li>
-                <li><a href="{{ route('kategorija', ['masinos']) }}">Mašinos</a></li>
-                <li><a href="{{ route('kategorija', ['lektuvai']) }}">Lėktuvai</a></li>
+                <li><a href="{{ route('kategorija', ['mašinos']) }}">Mašinos</a></li>
+                <li><a href="{{ route('kategorija', ['lėktuvai']) }}">Lėktuvai</a></li>
                 <li><a href="{{ route('kategorija', ['laivai']) }}">Laivai</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

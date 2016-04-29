@@ -35,12 +35,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{ route('home') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
-                <li class="active"><a href="{{ route('straipsniai') }}">Visi straipsniai</a></li>
-                <li><a href="{{ route('istorijos') }}">Istorijos</a></li>
-                <li><a href="{{ route('masinos') }}">Mašinos</a></li>
-                <li><a href="{{ route('lektuvai') }}">Lėktuvai</a></li>
-                <li><a href="{{ route('laivai') }}">Laivai</a></li>
+                <li class="active"><a href="{{ route('home') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ route('kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
+                <li><a href="{{ route('kategorija', ['istorijos']) }}">Istorijos</a></li>
+                <li><a href="{{ route('kategorija', ['mašinos']) }}">Mašinos</a></li>
+                <li><a href="{{ route('kategorija', ['lėktuvai']) }}">Lėktuvai</a></li>
+                <li><a href="{{ route('kategorija', ['laivai']) }}">Laivai</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
