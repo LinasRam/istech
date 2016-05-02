@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Istech TVS</title>
+    <title>{{ ucfirst($title) }}</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('admin') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ route('admin') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('admin.kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
                 <li><a href="{{ route('admin.kategorija', ['istorijos']) }}">Istorijos</a></li>
                 <li><a href="{{ route('admin.kategorija', ['mašinos']) }}">Mašinos</a></li>
@@ -117,6 +117,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script>
+    $(document).ready(function(){
+        var title = document.title;
+        $("a:contains('"+title+"')").parent().addClass('active');
+    });
+</script>
 
 </body>
 </html>

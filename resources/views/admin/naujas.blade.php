@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Istech TVS</title>
+    <title>Naujas straipsnis</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('admin') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ route('admin') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{ route('admin.kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
                 <li><a href="{{ route('admin.kategorija', ['istorijos']) }}">Istorijos</a></li>
                 <li><a href="{{ route('admin.kategorija', ['mašinos']) }}">Mašinos</a></li>
@@ -64,32 +64,46 @@
 
 <body>
 
-<div id="news" class="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-9">
-            @foreach($straipsniai as $straipsnis)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title pull-left">{{ $straipsnis->pavadinimas }}</h3>
-                        <a href="#"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                        <a href="#"><span class="glyphicon glyphicon-pencil pull-right"></span></a>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-4">
-                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}" class="thumbnail">
-                                    <img src="{{ $straipsnis->photo }}" alt="...">
-                                </a>
-                            </div>
-                            <p>{{ $straipsnis->ivadas }}</p>
-                            <div class="read-more">
-                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}">Skaityti daugiau</a>
-                            </div>
-                        </div>
+        <div class="col-md-9 col-centered">
+            <form action="{{ route('admin.naujas') }}" method="post">
+                <h2 class="form-signin-heading">Naujas straipsnis:</h2>
+                <div class="form-group">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
                     </div>
                 </div>
-            @endforeach
+                <div class="form-group">
+                    <label for="pavadinimas">Straipsnio pavadinimas:</label>
+                    <input class="form-control" type="text" name="pavadinimas" id="pavadinimas">
+                </div>
+                <div class="form-group">
+                    <label for="ivadas">Įvadas:</label>
+                    <textarea class="form-control" rows="3" name="ivadas" id="ivadas"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Tekstas">Tekstas:</label>
+                    <textarea class="form-control" rows="6" name="tekstas" id="tekstas"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Nuotraukos URL:</label>
+                    <input class="form-control" type="text" name="photo" id="photo">
+                </div>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Įkelti</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -117,6 +131,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script>
+    $(document).ready(function(){
+        var title = document.title;
+        $("a:contains('"+title+"')").parent().addClass('active');
+    });
+</script>
 
 </body>
 </html>

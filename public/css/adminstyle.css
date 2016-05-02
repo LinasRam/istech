@@ -11,3 +11,15 @@
 label{
     color: #173B0B;
 }
+
+.glyphicon-pencil {
+    margin-right: 10px;
+}
+
+.glyphicon-trash{
+    color: red;
+}
+
+.footer{
+    margin-top: 30px;
+}

@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
-    
-    public function getAdminPage(){
-        return view('admin.admin');
-    }
 
     public function postSignUp(Request $request){
         $name = $request['name'];

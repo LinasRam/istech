@@ -56,8 +56,26 @@ Route::group(['middleware' => ['web']], function(){
     ]);
 
     Route::get('/admin', [
-        'uses' => 'userController@getAdminPage',
+        'uses' => 'adminController@getAdminPage',
         'as' => 'admin',
+        'middleware' => 'auth'
+    ]);
+    
+    Route::get('/admin/kategorija/{kategorija?}', [
+        'uses' => 'adminController@getKategorijaPage',
+        'as' => 'admin.kategorija',
+        'middleware' => 'auth'
+    ]);
+
+    Route::get('/admin/naujas', [
+        'uses' => 'adminController@getNaujasPage',
+        'as' => 'admin.naujas',
+        'middleware' => 'auth'
+    ]);
+
+    Route::post('/admin/naujas', [
+        'uses' => 'adminController@postNaujasStraipsnis',
+        'as' => 'admin.naujas',
         'middleware' => 'auth'
     ]);
 
