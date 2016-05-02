@@ -93,3 +93,8 @@ Route::post('/admin/redaguoti/', [
     'as' => 'admin.redaguoti',
     'middleware' => 'auth'
 ]);
+
+Route::get('admin/delete/{url?}', [
+    'uses' => 'adminController@deleteStraipsnis',
+    'as' => 'admin.delete'
+]);

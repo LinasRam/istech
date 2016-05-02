@@ -97,5 +97,12 @@ class adminController extends Controller
 
         return redirect()->route('admin');
     }
+
+    public function deleteStraipsnis($url){
+        $straipsnis = Straipsniai::where('url', $url)->first();
+        $straipsnis->delete();
+
+        return redirect()->route('admin');
+    }
     
 }

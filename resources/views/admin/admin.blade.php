@@ -72,7 +72,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title pull-left">{{ $straipsnis->pavadinimas }}</h3>
-                        <a href="#"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                        <a href="{{ route('admin.delete', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                         <a href="{{ route('admin.redaguotiPage', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-pencil pull-right"></span></a>
                         <div class="clearfix"></div>
                     </div>
