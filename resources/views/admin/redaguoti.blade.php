@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{{ ucfirst($title) }}</title>
+    <title>Redaguoti straipsnį</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -65,32 +65,45 @@
 
 <body>
 
-<div id="news" class="container">
+<div class="container">
     <div class="row">
-        <div class="col-md-9">
-            @foreach($straipsniai as $straipsnis)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title pull-left">{{ $straipsnis->pavadinimas }}</h3>
-                        <a href="#"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                        <a href="{{ route('admin.redaguotiPage', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-pencil pull-right"></span></a>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-6 col-md-4">
-                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}" class="thumbnail">
-                                    <img src="{{ $straipsnis->photo }}" alt="...">
-                                </a>
-                            </div>
-                            <p>{{ $straipsnis->ivadas }}</p>
-                            <div class="read-more">
-                                <a href="{{ route('straipsnis', [$straipsnis->kategorija, $straipsnis->url]) }}">Skaityti daugiau</a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-md-9 col-centered">
+            <form action="{{ route('admin.redaguoti') }}" method="post">
+                <h2 class="form-signin-heading">Straipsnis:</h2>
+                <div class="form-group">
+                    <label for="kategorija">Straipsnio kategorija:</label>
+                    <select name="kategorija" class="form-control">
+                        @foreach($kategorijos as $kategorija)
+                            @if($kategorija->pavadinimas == $straipsnis->kategorija)
+                                <option selected="selected" value="{{ $kategorija->pavadinimas }}">{{ ucfirst($kategorija->pavadinimas) }}</option>
+                            @else
+                                <option value="{{ $kategorija->pavadinimas }}">{{ ucfirst($kategorija->pavadinimas) }}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
-            @endforeach
+                <div class="form-group {{ $errors->has('pavadinimas') ? 'has-error' : '' }}">
+                    <label for="pavadinimas">Straipsnio pavadinimas:</label>
+                    <input class="form-control has-error" type="text" name="pavadinimas" id="pavadinimas" value="{{ $straipsnis->pavadinimas }}">
+                </div>
+                <div class="form-group {{ $errors->has('ivadas') ? 'has-error' : '' }}">
+                    <label for="ivadas">Įvadas:</label>
+                    <textarea class="form-control" rows="5" name="ivadas" id="ivadas">{{ $straipsnis->ivadas }}</textarea>
+                </div>
+                <div class="form-group {{ $errors->has('tekstas') ? 'has-error' : '' }}">
+                    <label for="Tekstas">Tekstas:</label>
+                    <textarea class="form-control" rows="10" name="tekstas" id="tekstas">{{ $straipsnis->tekstas }}</textarea>
+                </div>
+                <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
+                    <label for="photo">Nuotraukos URL:</label>
+                    <input class="form-control" type="text" name="photo" id="photo" value="{{ $straipsnis->photo }}">
+                </div>
+                <input type="hidden" name="_token" value="{{ Session::token() }}">
+                <input type="hidden" name="url" value="{{ $straipsnis->url }}">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Redaguoti</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -81,3 +81,15 @@ Route::post('/admin/naujas', [
     'as' => 'admin.naujas',
     'middleware' => 'auth'
 ]);
+
+Route::get('/admin/redaguoti/{url?}', [
+    'uses' => 'adminController@getRedaguotiPage',
+    'as' => 'admin.redaguotiPage',
+    'middleware' => 'auth'
+]);
+
+Route::post('/admin/redaguoti/', [
+    'uses' => 'adminController@postStraipsnisUpdate',
+    'as' => 'admin.redaguoti',
+    'middleware' => 'auth'
+]);

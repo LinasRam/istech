@@ -61,5 +61,41 @@ class adminController extends Controller
         
         return redirect()->route('admin');
     }
+
+    public function getRedaguotiPage($url){
+        $kategorijos = Kategorijos::all();
+
+        $straipsnis = Straipsniai::where('url', $url)->first();
+
+        return view('admin.redaguoti', ['kategorijos' => $kategorijos, 'straipsnis' => $straipsnis]);
+    }
+
+    public function postStraipsnisUpdate(Request $request){
+        $this->validate($request, [
+            'pavadinimas' => 'required',
+            'ivadas' => 'required',
+            'tekstas' => 'required',
+            'photo' => 'required'
+        ]);
+
+        $straipsnis = Straipsniai::where('url', $request['url'])->first();
+
+        $pavadinimas = $request['pavadinimas'];
+        $ivadas = $request['ivadas'];
+        $tekstas = $request['tekstas'];
+        $photo = $request['photo'];
+        $kategorija = $request['kategorija'];
+        $url = str_replace(' ', '-', strtolower($request['pavadinimas']));
+
+        $straipsnis->pavadinimas = $pavadinimas;
+        $straipsnis->ivadas = $ivadas;
+        $straipsnis->tekstas = $tekstas;
+        $straipsnis->photo = $photo;
+        $straipsnis->kategorija = $kategorija;
+        $straipsnis->url = $url;
+        $straipsnis->save();
+
+        return redirect()->route('admin');
+    }
     
 }

@@ -84,11 +84,11 @@
                 </div>
                 <div class="form-group {{ $errors->has('ivadas') ? 'has-error' : '' }}">
                     <label for="ivadas">Įvadas:</label>
-                    <textarea class="form-control" rows="3" name="ivadas" id="ivadas">{{ Request::old('ivadas') }}</textarea>
+                    <textarea class="form-control" rows="5" name="ivadas" id="ivadas">{{ Request::old('ivadas') }}</textarea>
                 </div>
                 <div class="form-group {{ $errors->has('tekstas') ? 'has-error' : '' }}">
                     <label for="Tekstas">Tekstas:</label>
-                    <textarea class="form-control" rows="6" name="tekstas" id="tekstas">{{ Request::old('tekstas') }}</textarea>
+                    <textarea class="form-control" rows="10" name="tekstas" id="tekstas">{{ Request::old('tekstas') }}</textarea>
                 </div>
                 <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
                     <label for="photo">Nuotraukos URL:</label>
