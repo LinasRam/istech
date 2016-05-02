@@ -42,41 +42,42 @@ Route::get('/signup-page', function(){
     return view('admin.signup');
 })->name('signupPage');
 
+Route::post('/signup', [
+    'uses' => 'userController@postSignUp',
+    'as' => 'signup'
+]);
 
-Route::group(['middleware' => ['web']], function(){
+Route::post('/login', [
+    'uses' => 'userController@postLogIn',
+    'as' => 'login'
+]);
 
-    Route::post('/signup', [
-        'uses' => 'userController@postSignUp',
-        'as' => 'signup'
-    ]);
+Route::get('/logout', [
+    'uses' => 'userController@getLogOut',
+    'as' => 'logout',
+    'middleware' => 'auth'
+]);
 
-    Route::post('/login', [
-        'uses' => 'userController@postLogIn',
-        'as' => 'login'
-    ]);
+Route::get('/admin', [
+    'uses' => 'adminController@getAdminPage',
+    'as' => 'admin',
+    'middleware' => 'auth'
+]);
 
-    Route::get('/admin', [
-        'uses' => 'adminController@getAdminPage',
-        'as' => 'admin',
-        'middleware' => 'auth'
-    ]);
-    
-    Route::get('/admin/kategorija/{kategorija?}', [
-        'uses' => 'adminController@getKategorijaPage',
-        'as' => 'admin.kategorija',
-        'middleware' => 'auth'
-    ]);
+Route::get('/admin/kategorija/{kategorija?}', [
+    'uses' => 'adminController@getKategorijaPage',
+    'as' => 'admin.kategorija',
+    'middleware' => 'auth'
+]);
 
-    Route::get('/admin/naujas', [
-        'uses' => 'adminController@getNaujasPage',
-        'as' => 'admin.naujas',
-        'middleware' => 'auth'
-    ]);
+Route::get('/admin/naujas', [
+    'uses' => 'adminController@getNaujasPage',
+    'as' => 'admin.naujas',
+    'middleware' => 'auth'
+]);
 
-    Route::post('/admin/naujas', [
-        'uses' => 'adminController@postNaujasStraipsnis',
-        'as' => 'admin.naujas',
-        'middleware' => 'auth'
-    ]);
-
-});
+Route::post('/admin/naujas', [
+    'uses' => 'adminController@postNaujasStraipsnis',
+    'as' => 'admin.naujas',
+    'middleware' => 'auth'
+]);

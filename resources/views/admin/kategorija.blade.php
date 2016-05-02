@@ -57,6 +57,7 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ route('logout') }}">Atsijungti</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

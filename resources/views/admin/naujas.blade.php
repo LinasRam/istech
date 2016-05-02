@@ -57,6 +57,7 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ route('logout') }}">Atsijungti</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -70,34 +71,28 @@
             <form action="{{ route('admin.naujas') }}" method="post">
                 <h2 class="form-signin-heading">Naujas straipsnis:</h2>
                 <div class="form-group">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Action <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
+                    <label for="kategorija">Straipsnio kategorija:</label>
+                    <select name="kategorija" class="form-control">
+                        @foreach($kategorijos as $kategorija)
+                            <option value="{{ $kategorija->pavadinimas }}">{{ ucfirst($kategorija->pavadinimas) }}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('pavadinimas') ? 'has-error' : '' }}">
                     <label for="pavadinimas">Straipsnio pavadinimas:</label>
-                    <input class="form-control" type="text" name="pavadinimas" id="pavadinimas">
+                    <input class="form-control has-error" type="text" name="pavadinimas" id="pavadinimas" value="{{ Request::old('pavadinimas') }}">
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('ivadas') ? 'has-error' : '' }}">
                     <label for="ivadas">Įvadas:</label>
-                    <textarea class="form-control" rows="3" name="ivadas" id="ivadas"></textarea>
+                    <textarea class="form-control" rows="3" name="ivadas" id="ivadas">{{ Request::old('ivadas') }}</textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('tekstas') ? 'has-error' : '' }}">
                     <label for="Tekstas">Tekstas:</label>
-                    <textarea class="form-control" rows="6" name="tekstas" id="tekstas"></textarea>
+                    <textarea class="form-control" rows="6" name="tekstas" id="tekstas">{{ Request::old('tekstas') }}</textarea>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('photo') ? 'has-error' : '' }}">
                     <label for="photo">Nuotraukos URL:</label>
-                    <input class="form-control" type="text" name="photo" id="photo">
+                    <input class="form-control" type="text" name="photo" id="photo" value="{{ Request::old('photo') }}">
                 </div>
                 <input type="hidden" name="_token" value="{{ Session::token() }}">
                 <div class="text-center">
