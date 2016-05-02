@@ -33,3 +33,32 @@ Route::get('/straipsnis/{kategorija?}/{url?}', [
     'uses' => 'straipsnisController@getStraipsnis',
     'as' => 'straipsnis'
 ]);
+
+Route::get('/login-page', function(){
+    return view('admin.login');
+})->name('loginPage');
+
+Route::get('/signup-page', function(){
+    return view('admin.signup');
+})->name('signupPage');
+
+
+Route::group(['middleware' => ['web']], function(){
+
+    Route::post('/signup', [
+        'uses' => 'userController@postSignUp',
+        'as' => 'signup'
+    ]);
+
+    Route::post('/login', [
+        'uses' => 'userController@postLogIn',
+        'as' => 'login'
+    ]);
+
+    Route::get('/admin', [
+        'uses' => 'userController@getAdminPage',
+        'as' => 'admin',
+        'middleware' => 'auth'
+    ]);
+
+});

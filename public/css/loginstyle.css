@@ -1,0 +1,13 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.form-signin-heading{
+    color: #173B0B;
+    text-align: center;
+}
+
+label{
+    color: #173B0B;
+}
