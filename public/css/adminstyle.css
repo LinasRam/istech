@@ -23,3 +23,16 @@ label{
 .footer{
     margin-top: 30px;
 }
+
+.modal-header{
+    background-color: #173B0B;
+    color: #ccc;
+}
+
+.modal-body{
+    background-color: #ccc;
+}
+
+.btn-danger{
+    margin-right: 5px;
+}

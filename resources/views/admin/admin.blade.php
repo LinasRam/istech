@@ -72,7 +72,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title pull-left">{{ $straipsnis->pavadinimas }}</h3>
-                        <a href="{{ route('admin.delete', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                        {{--<a href="{{ route('admin.delete', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-trash pull-right"></span></a>--}}
+                        <a data-toggle="modal" data-target="#delete-dialog"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                         <a href="{{ route('admin.redaguotiPage', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-pencil pull-right"></span></a>
                         <div class="clearfix"></div>
                     </div>
@@ -91,6 +92,23 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete-dialog">click</button>
+
+<div class="modal fade" id="delete-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Ar tikrai norite ištrinti šį straipsnį?
+            </div>
+            <div class="modal-body">
+                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Ne</button>
+                <button type="button" class="btn btn-danger pull-right" href="#">Ištrinti</button>
+                <div class="clearfix"></div>
+            </div>
         </div>
     </div>
 </div>
