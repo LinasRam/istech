@@ -10,8 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
+    public function getSignUpPage(){
+        return view('admin.signup');
+    }
 
     public function postSignUp(Request $request){
+        $this->validate($request, [
+            'name' => 'required|unique:users',
+            'email' => 'required|unique:users|email',
+            'password' => 'required'
+        ]);
+        
         $name = $request['name'];
         $email = $request['email'];
         $password = bcrypt($request['password']);

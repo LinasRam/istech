@@ -37,7 +37,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('admin') }}">Pagrindinis <span class="sr-only">(current)</span></a></li>
-                <li><a href="{{ route('admin.kategorija', ['visi-straipsniai']) }}">Visi straipsniai</a></li>
                 <li><a href="{{ route('admin.kategorija', ['istorijos']) }}">Istorijos</a></li>
                 <li><a href="{{ route('admin.kategorija', ['mašinos']) }}">Mašinos</a></li>
                 <li><a href="{{ route('admin.kategorija', ['lėktuvai']) }}">Lėktuvai</a></li>

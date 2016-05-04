@@ -38,13 +38,16 @@ Route::get('/login-page', function(){
     return view('admin.login');
 })->name('loginPage');
 
-Route::get('/signup-page', function(){
-    return view('admin.signup');
-})->name('signupPage');
+Route::get('/admin/signup-page', [
+    'uses' => 'userController@getSignUpPage',
+    'as' => 'signupPage',
+    'middleware' => 'auth'
+]);
 
 Route::post('/signup', [
     'uses' => 'userController@postSignUp',
-    'as' => 'signup'
+    'as' => 'signup',
+    'middleware' => 'auth'
 ]);
 
 Route::post('/login', [
