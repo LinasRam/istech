@@ -20,6 +20,10 @@ label{
     color: red;
 }
 
+.glyphicon-trash:hover{
+    color: #880000;
+}
+
 .footer{
     margin-top: 30px;
 }

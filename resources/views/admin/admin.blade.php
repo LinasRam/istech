@@ -73,7 +73,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title pull-left">{{ $straipsnis->pavadinimas }}</h3>
                         {{--<a href="{{ route('admin.delete', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-trash pull-right"></span></a>--}}
-                        <a data-toggle="modal" data-target="#delete-dialog"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                        <a id="delete-button" data-toggle="modal" data-target="#delete-dialog" onclick="onDeleteButtonClick('{{ $straipsnis->url }}')"><span class="glyphicon glyphicon-trash pull-right"></span></a>
                         <a href="{{ route('admin.redaguotiPage', [$straipsnis->url]) }}"><span class="glyphicon glyphicon-pencil pull-right"></span></a>
                         <div class="clearfix"></div>
                     </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="modal-body">
                 <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Ne</button>
-                <button type="button" class="btn btn-danger pull-right" href="#">Ištrinti</button>
+                <button type="button" class="btn btn-danger pull-right" data-url="">Ištrinti</button>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -136,6 +136,24 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<script>
+//    $('#delete-button').on('click',function () {
+//        var dataUrl = $('#delete-button').data('url');
+//        $('.modal-body .btn-danger').attr('data-url', dataUrl);
+//    });
+
+    function onDeleteButtonClick(dataUrl){
+        $('.modal-body .btn-danger').attr('data-url', dataUrl);
+    }
+
+    $('.modal-body .btn-danger').on('click', function () {
+        var url = "{{ route('admin.delete', [':url']) }}";
+        dataUrl = $('.modal-body .btn-danger').data('url');
+        url = url.replace(':url', dataUrl);
+        window.location.href = url;
+    });
+</script>
 
 </body>
 </html>
