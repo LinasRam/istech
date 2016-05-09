@@ -27,7 +27,7 @@
                     <div class="carousel-caption">
                         <h1>Visada idomūs straipsniai</h1>
                         <p>Straipsniai apie mašinas, lėktuvus, laivus.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Skaityti straipsnius</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="{{ route('kategorija', ['visi-straipsniai']) }}" role="button">Skaityti straipsnius</a></p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Sekite mus facebook'e</h1>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Facebook</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="https://www.facebook.com/istorinetech/" role="button">Facebook</a></p>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,7 @@
 @endsection
 
 @section('main_content')
+    <h2>Naujausi straipsniai</h2>
     @foreach($straipsniai as $straipsnis)
         <div class="panel panel-default">
             <div class="panel-heading">

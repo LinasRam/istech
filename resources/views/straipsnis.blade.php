@@ -7,7 +7,14 @@
 @section('main_photo')
     <div class="jumbotron" style="background-image: url({{ $straipsnis->photo }});">
         <div class="container">
-            <h1>{{ $straipsnis->pavadinimas }}</h1>
+            <div id="Header">
+                <div class="Background">
+                    <h1>{{ $straipsnis->pavadinimas }}</h1>
+                </div>
+                <div class="Foreground">
+                    <h1>{{ $straipsnis->pavadinimas }}</h1>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

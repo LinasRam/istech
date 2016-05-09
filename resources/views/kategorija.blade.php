@@ -5,8 +5,17 @@
 @endsection
 
 @section('main_photo')
-    <div class="jumbotron" style="background-image: url(https://scontent-arn2-1.xx.fbcdn.net/hphotos-prn2/v/t1.0-9/10857736_635785036554764_1430993853386636908_n.jpg?oh=cb3209f078c437457ee201d40c12ec6a&oe=57772349);">
-
+    <div class="jumbotron" style="background-image: url({{ $photo }});">
+        <div class="container">
+            <div id="Header">
+                <div class="Background">
+                    <h1>{{ ucfirst($title) }}</h1>
+                </div>
+                <div class="Foreground">
+                    <h1>{{ ucfirst($title) }}</h1>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
