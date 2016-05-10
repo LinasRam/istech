@@ -13,10 +13,10 @@ class kategorijaController extends Controller
     public function getKategorijaPage($kategorija){
         $title = 'Visi straipsniai';
         if($kategorija == 'visi-straipsniai'){
-            $straipsniai = Straipsniai::orderBy('id', 'DESC')->get();
+            $straipsniai = Straipsniai::orderBy('id', 'DESC')->paginate(10);
         }
         else{
-            $straipsniai = Straipsniai::where('kategorija', $kategorija)->orderBy('id','DESC')->get();
+            $straipsniai = Straipsniai::where('kategorija', $kategorija)->orderBy('id','DESC')->paginate(10);
             $title = $kategorija;
         }
 

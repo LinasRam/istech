@@ -11,7 +11,7 @@ class adminController extends Controller
 {
 
     public function getAdminPage(){
-        $straipsniai = Straipsniai::orderBy('id', 'DECS')->get();
+        $straipsniai = Straipsniai::orderBy('id', 'DECS')->paginate(10);
 
         return view('admin.admin', ['straipsniai' => $straipsniai]);
     }
@@ -19,10 +19,10 @@ class adminController extends Controller
     public function getKategorijaPage($kategorija){
         $title = 'Visi straipsniai';
         if($kategorija == 'visi-straipsniai'){
-            $straipsniai = Straipsniai::orderBy('id', 'DESC')->get();
+            $straipsniai = Straipsniai::orderBy('id', 'DESC')->paginate(10);
         }
         else{
-            $straipsniai = Straipsniai::where('kategorija', $kategorija)->orderBy('id','DESC')->get();
+            $straipsniai = Straipsniai::where('kategorija', $kategorija)->orderBy('id','DESC')->paginate(10);
             $title = $kategorija;
         }
 

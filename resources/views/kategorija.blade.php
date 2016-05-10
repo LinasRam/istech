@@ -40,4 +40,8 @@
             </div>
         </div>
     @endforeach
+
+    <div class="center">
+        {!! $straipsniai->render() !!}
+    </div>
 @endsection
