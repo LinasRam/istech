@@ -44,6 +44,11 @@ Route::get('/paieska/{zodis?}', [
     'as' => 'paieska'
 ]);
 
+Route::get('/admin/paieska/{zodis?}', [
+    'uses' => 'adminController@getPaieska',
+    'as' => 'admin.paieska'
+]);
+
 Route::get('/login-page', function(){
     return view('admin.login');
 })->name('loginPage');

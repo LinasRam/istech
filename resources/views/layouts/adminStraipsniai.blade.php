@@ -4,6 +4,12 @@
     <div id="news" class="container">
         <div class="row">
             <div class="col-md-9">
+                <div class="input-group">
+                    <input id="search-box" type="text" class="form-control" placeholder="Ieškokite straipsnių">
+                    <span class="input-group-btn">
+                        <button id="search-button" class="btn btn-primary" type="button">Ieškoti</button>
+                    </span>
+                </div>
                 @foreach($straipsniai as $straipsnis)
                     <div class="panel panel-default">
                         <div class="panel-heading">

@@ -105,4 +105,10 @@ class adminController extends Controller
         return redirect()->route('admin');
     }
     
+    public function getPaieska($zodis){
+        $straipsniai = Straipsniai::where('pavadinimas', 'LIKE', "%$zodis%")->get();
+
+        return view('admin.paieska', ['straipsniai' => $straipsniai]);
+    }
+    
 }
