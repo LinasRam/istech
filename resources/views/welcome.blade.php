@@ -52,6 +52,12 @@
 @endsection
 
 @section('main_content')
+    <div class="input-group">
+        <input id="search-box" type="text" class="form-control" placeholder="Ieškokite straipsnių">
+        <span class="input-group-btn">
+            <button id="search-button" class="btn btn-primary" type="button">Ieškoti</button>
+        </span>
+    </div>
     <h2>Naujausi straipsniai</h2>
     @foreach($straipsniai as $straipsnis)
         <div class="panel panel-default">

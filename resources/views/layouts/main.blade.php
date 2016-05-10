@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -98,6 +99,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
     (function(d, s, id) {
@@ -116,7 +118,28 @@
             $("a:contains('Pagrindinis')").parent().addClass('active');
         else $("a:contains('"+title+"')").parent().addClass('active');
     });
+
+    $('#search-box').autocomplete({
+        source:"{{ route('autocomplete') }}",
+        minLength:3,
+        select: function(event,ui){
+            var word = ui.item.value;
+            window.location.href = "{{ route('paieska') }}" + "/" + word;
+        }
+    });
+
+    $('#search-button').on('click', function(){
+        window.location.href = "{{ route('paieska') }}" + '/' + $('#search-box').val();
+    });
+
+    $('#search-box').keypress(function (e) {
+        if(e.which == 13){
+            $('#search-button').click();
+        }
+    });
 </script>
+
+@yield('scripts')
 
 </body>
 </html>

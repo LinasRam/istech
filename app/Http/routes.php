@@ -34,6 +34,16 @@ Route::get('/straipsnis/{kategorija?}/{url?}', [
     'as' => 'straipsnis'
 ]);
 
+Route::get('/autocomplete', [
+    'uses' => 'welcomeController@doAutocomplete',
+    'as' => 'autocomplete'
+]);
+
+Route::get('/paieska/{zodis?}', [
+    'uses' => 'welcomeController@getPaieska',
+    'as' => 'paieska'
+]);
+
 Route::get('/login-page', function(){
     return view('admin.login');
 })->name('loginPage');
