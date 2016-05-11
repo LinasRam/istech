@@ -233,3 +233,8 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 .input-group{
     margin-top: 15px;
 }
+
+.thumbnail-gallery{
+    padding: 0;
+    border-radius: 0;
+}
