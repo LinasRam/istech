@@ -46,6 +46,15 @@ body{
     border-top-color: #eee;
     border-bottom-color: #eee;
 }
+
+ul.dropdown-menu>li.active>a:hover{
+    background: #173B0B !important;
+}
+
+ul.dropdown-menu>li.active>a{
+    background: #0B610B !important;
+}
+
 .navbar-default .navbar-nav > .open > a .caret,
 .navbar-default .navbar-nav > .open > a:hover .caret,
 .navbar-default .navbar-nav > .open > a:focus .caret {
@@ -92,7 +101,8 @@ h1, h2{
 
 .btn-primary:hover,
 .btn-primary:active,
-.btn-primary:focus{
+.btn-primary:focus,
+.btn-primary:active:focus{
     background-color: #0B610B;
     border-color: #0B610B;
 }

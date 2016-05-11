@@ -18,7 +18,7 @@
                     <div class="carousel-caption">
                         <h1>Sveiki atvykę į ISTECH</h1>
                         <p>IsTech – tai puslapis skirtas besidomintiems istorija, aviacija, bei karine ir civiline technika.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Apie mus</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="{{ route('apie') }}" role="button">Apie mus</a></p>
                     </div>
                 </div>
             </div>

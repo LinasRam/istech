@@ -33,5 +33,9 @@ class welcomeController extends Controller
 
         return view('paieska', ['straipsniai' => $straipsniai]);
     }
+    
+    public function getApieMus(){
+        return view('apie');
+    }
 
 }

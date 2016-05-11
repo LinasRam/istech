@@ -48,7 +48,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Daugiau <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Apie mus</a></li>
+                        <li><a href="{{ route('apie') }}">Apie mus</a></li>
                     </ul>
                 </li>
             </ul>
@@ -82,12 +82,12 @@
         <div class="row">
             <div class="col-md-4">
                 <h3>Kontaktai</h3>
-                <p>Facebook</p>
+                <a href="https://www.facebook.com/istorinetech/"><p>Facebook</p></a>
                 <p>El. paštas</p>
             </div>
             <div class="col-md-4">
                 <h3>Daugiau</h3>
-                <p>Apie mus</p>
+                <a href="{{ route('apie') }}"><p>Apie mus</p></a>
             </div>
         </div>
         <div class="row" id="copyright">
