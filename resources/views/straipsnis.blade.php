@@ -27,7 +27,7 @@
 @section('main_content')
     <div class="panel panel-default">
         <div class="panel-body">
-            <p>{{ $straipsnis->tekstas }}</p>
+            <p>{!! nl2br(e($straipsnis->tekstas)) !!}</p>
 
             <div id="links" class="container-fluid">
                 <div class="row">
